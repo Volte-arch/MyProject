@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+*{
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+body{
+    margin: 0;
+    background: #2874a6 ;
+    color: white;
+    width: 100%;
+}
+nav{
+    position: relative;
+    background: #2E5073;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.Welcome{
+    display: flex;
+    height: 3em;
+    margin-left: 2%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    z-index: 4;
+}
+.Welcome>h3{
+    margin-top: 5px;
+    margin-left: 0em;
+    font-family: "SUSE", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    z-index: 4;
+}
+.Welcome>h1{
+    font-family: "Lato", sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    z-index: 4;
+}
+.private-shared{
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    width: 65%;
+    /* margin-top: 1em; */
+}
+.private-shared span{
+    /* margin-left: 2em; */
+    margin-right: 2em;
+    cursor: pointer;
+    font-size: 21px;
+    transition: all 250ms;
+    z-index: 0;
+}
+.private-shared >span:hover{
+    text-decoration-line:underline;
+}
+.clickFileAndOpenSetting{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.click-add-file{
+    /* width: 10%; */
+    margin-right: 0.5em;
+    text-align: center;
+    cursor: pointer;
+}
+.Main-add-file{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0px;
+    top: 0vh;
+    background: #323D42;
+    opacity: 0.8;
+    z-index: 5;
+}
+.conteiner-add-file{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(175, 175, 175);
+    border-radius: 10px;
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+.add-file{
+    position: relative;
+    background-color: #fff;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+    width: 9rem;
+    height: 20vh;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    z-index: 0;
+}
+.added-files{
+    background: black;
+    width: 150px;
+    height: 20vh;
+    border-radius: 10px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.added-files>video{
+    border-radius: 10px;
+    width: 100%;
+    height: 20vh;
+}
+.add-file>form{
+    width: 100%;
+    height: 20vh;
+}
+.add-file>form>label{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-file>form>input[type=file]{
+    display: none;
+}
+.add-file>form>button{
+    position: absolute;
+    bottom: 0em;
+    width: 100%;
+    height: 4vh;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-file>form>button:hover{
+    background: #2a76a8;
+    color: white;
+    border: 1px solid white;
+}
+
+.opensetting{
+    width: 2.2em;
+    height: 2.2em;
+    margin-right: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    border-radius: 100%;
+    background: rgb(163, 163, 163);
+    
+
+}
+.opensetting>svg{
+    cursor: pointer;
+    transition: all 250ms;
+    border-radius: 100%;
+    outline: none; 
+    background-color: inherit;
+}
+
+.opensetting>svg:hover{
+    transform: rotate(60deg);
+}
+.closesetting{
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: flex-end;
+}
+.main-setting{
+    position: absolute;
+    float: right;
+    right: 0em;
+    top: 5vh;
+    min-width: 25%;
+    height: 95vh;
+    border-radius: 10px;
+    background: gray;
+    z-index: 4;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.setting{
+    margin-top: 5vh;
+    width: 95%;
+    border: 1px solid black;
+}
+.setting:hover{
+    /* transform: rotate(2deg); */
+}
+.setting>button{
+    margin-left: 50%;
+    margin-bottom: 0.5em;
+    transform: translate(-50%);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+.setting>button:hover{
+    background: #2E5073;
+    color: white;
+}
+.buttons{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.buttons>button{
+    width: 90%;
+    height: 2vh;
+    margin-left: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
+.buttons>button:hover{
+    background: #2E5073;
+    color: white;
+}
+.Veryfication-account{
+    margin: 0.5em;
+}
+.Veryfication-account:hover{
+    border: 1px solid black;
+}
+.Veryfication-account>input[type="button"]{
+    border-radius: 10px;
+    margin-left: 0.5em;
+    border: none;
+}
+.Veryfication-account>input[type="button"]:hover {
+    background: #2E5073;
+    color: white;
+    cursor: pointer;
+}
+
+.Veryfication-account> h2,h3{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.Veryfication-account>h3{
+    font-weight: 200;
+}
+.Edit-Phone{
+    margin: 0.5em;
+    padding: 0.5em;
+    display: flex;
+}
+.Edit-Phone>input[type="text"]{
+    border: none;
+    padding-left: 0.5em;
+    width: 40%;
+}
+.Edit-Phone:hover{
+    border: 1px solid black;
+}
+.Edit-Phone>h2{
+    margin: 0px;
+    margin-right: 0.2em;
+}
+.Edit-Nickname{
+    margin: 0.5em;
+    padding: 0.5em;
+}
+.Edit-Nickname:hover{
+    border: 1px solid black;
+}
+.Edit-Nickname> h2{
+    margin-left: 0.5em;
+    margin: 0px;
+}
+.Edit-Nickname> h3{
+    font-weight: 200;
+}
+.Added-name-and-lastname{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+.Added-name-and-lastname:hover{
+    border: 1px solid black;
+}
+.Added-name-and-lastname> h4{
+    margin-left: 0.5em;
+    margin: 0px;
+}
+.Added-name-and-lastname input[type=text]{
+    width: 50%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0.5em;
+    border: none;
+    border-radius: 10px;
+}
+.Main-content-media{
+    height: 80vh;
+    width: 99.5%;
+    background: #323D42;
+    margin-top: 4.5vh;
+    margin-left: 0.5%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.Main-content-media::-webkit-scrollbar{
+    width: 0.5em;
+}
+.Main-content-media::-webkit-scrollbar-track{
+    background: #2874a6;
+    width: 10px;
+}
+.Main-content-media::-webkit-scrollbar-thumb{
+    background: #2E5073;
+}
+
+.Content-media{
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1em;
+    margin-left: 0em;
+}
+.messages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    overflow: hidden;
+    width: 0px;
+}
+@media only screen and (max-width: 600px) {
+    .main-setting {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .private-shared{
+        position: absolute;
+        top: 7.5vh;
+        left: 5.5em;
+    }
+    .Main-content-media{
+        margin-top: 7.5vh;
+    }
+    .setting h3 {
+        
+    }
+
+    .main-setting > button {
+        margin-bottom: 1em;
+    }
+}
+@media (hover: none) {
+    element:active {
+        display: none;
+    }
+}
+
