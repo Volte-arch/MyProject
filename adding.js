@@ -4,6 +4,7 @@ const AddFile = () => {
 
     const handleFile = (e) => {
         const files = Array.from(e.target.files);
+        // image(Array.from(e.target.files));
         const AllowedMimeTypes = ['video/mp4', 'image/jpeg', 'image/png'];
         const AllowedSizeMB = 150;
         const newPreviews = [];
@@ -46,15 +47,40 @@ const AddFile = () => {
     };
     
         
-    const handleclick = (e)=>{
+    const handleclick = async (e)=>{
         e.preventDefault();
 
-        // fetch('./upload/upload.php',{
-        //     method: 'Post',
-        //     headers:{
-        //         'Content-Type':'application/json'
-        //     }
-        // })
+
+
+
+        const formData = new FormData();
+
+        if (image.length === 0) {
+            console.log('Please select a file');
+            return;
+        } else {
+            image.forEach((file) => {
+                if (!file.error) {
+                    formData.append('files', file);
+                }
+            });
+
+            try {
+                const response = await fetch('./upload/upload.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+            
+                const text = await response.text(); 
+                console.log('var dump:', text);
+            
+                const result = JSON.parse(text);
+                console.log(`File uploaded: ${result.fileName}`);
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+            
+        }
     }
         return (
         <>
