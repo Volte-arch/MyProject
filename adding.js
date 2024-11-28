@@ -1,16 +1,17 @@
 const AddFile = () => {
     const InputFile = React.useRef(null);
     const [image, setfile] = React.useState([]);
+    const [filesToUpload, setFilesToUpload] = React.useState([]);
 
     const handleFile = (e) => {
         const files = Array.from(e.target.files);
-        // image(Array.from(e.target.files));
         const AllowedMimeTypes = ['video/mp4', 'image/jpeg', 'image/png'];
         const AllowedSizeMB = 150;
         const newPreviews = [];
         const errors = [];
-
-        if (files.length === 0) {
+        const validFiles = [];
+        
+        if (files.length < 0) {
             errors.push({ error: 'Brak pliku wideo bądź zdjęcia' });
         } else {
             files.forEach((file) => {
@@ -22,6 +23,7 @@ const AddFile = () => {
                 } else if (fileSizeMB > AllowedSizeMB) {
                     errors.push({ error: `Plik jest za duży (max: ${AllowedSizeMB}MB)` });
                 } else {
+                    validFiles.push(file);
                     const reader = new FileReader();
                     reader.onload = () => {
                         newPreviews.push({
@@ -32,6 +34,7 @@ const AddFile = () => {
 
                         if (newPreviews.length + errors.length === files.length) {
                             setfile([...errors, ...newPreviews]);
+                            setFilesToUpload(validFiles); 
                         }
                     };
                     reader.readAsDataURL(file);
@@ -47,40 +50,45 @@ const AddFile = () => {
     };
     
         
-    const handleclick = async (e)=>{
-        e.preventDefault();
+    const handleclick = async (e) => {
+    e.preventDefault();
 
+    const formData = new FormData();
 
+    if (filesToUpload.length === 0) {
+        console.log('Please select a file');
+        return;
+    } else {
+        filesToUpload.forEach((file) => {
+            if (!file.error) {
+                formData.append('files[]', file);
+            } else {
+                console.log('Invalid file', file);
+            }
+        });
 
-
-        const formData = new FormData();
-
-        if (image.length === 0) {
-            console.log('Please select a file');
-            return;
-        } else {
-            image.forEach((file) => {
-                if (!file.error) {
-                    formData.append('files', file);
-                }
+        try {
+            const response = await fetch('./upload/upload.php', {
+                method: 'POST',
+                body: formData
             });
 
-            try {
-                const response = await fetch('./upload/upload.php', {
-                    method: 'POST',
-                    body: formData,
-                });
-            
-                const text = await response.text(); 
-                console.log('var dump:', text);
-            
-                const result = JSON.parse(text);
-                console.log(`File uploaded: ${result.fileName}`);
-            } catch (error) {
-                console.error('Error uploading file:', error);
+            if (!response.ok) {
+                throw new Error('Error while sending file');
             }
-            
+
+            const result = await response.json();
+
+            if (result.status === 'success'){
+                console.log(result.message);
+            } else {
+                console.log('Error in response:', result.message);
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
+    }
+
     }
         return (
         <>
