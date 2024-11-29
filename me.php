@@ -116,7 +116,7 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
                             
                             
                         </div>
-                            <video loading="lazy" type="video/mp4" src="./watch/shareing recordings/Re Cue feat. Andrzej Duda - Cień Mgły (4 FUN KWARANTANNA MIX) (Walczą z ostrym cieniem mgły).mp4"></video>
+                            <video loading="lazy" type="video/mp4" src=""></video>
                         </div>
                     </div>
                         <div class="more-info-video">
