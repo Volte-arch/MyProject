@@ -18,6 +18,7 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script type="text/babel" src="adding.js"></script>
     <script type="text/babel" src="app.js"></script>
+    <!-- <script src="me.js" defer></script> -->
     <script src="./watch/media.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -42,7 +43,7 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
                 <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M409.6 943.542857h-14.628571l-190.171429-109.714286c-7.314286 0-7.314286-7.314286-7.314286-7.314285l-14.628571-21.942857c-7.314286-7.314286-7.314286-21.942857 0-29.257143 7.314286-14.628571 14.628571-36.571429 14.628571-51.2 0-51.2-43.885714-95.085714-95.085714-95.085715-14.628571 0-29.257143-14.628571-29.257143-29.257142v-219.428572c0-7.314286 0-7.314286 7.314286-14.628571s14.628571-14.628571 21.942857-14.628572c51.2 0 95.085714-43.885714 95.085714-95.085714 0-14.628571-7.314286-29.257143-14.628571-43.885714-7.314286-7.314286-7.314286-21.942857 0-29.257143l7.314286-7.314286c0-7.314286 7.314286-7.314286 7.314285-7.314286L387.657143 58.514286c7.314286-7.314286 14.628571-7.314286 21.942857 0 14.628571-7.314286 21.942857 7.314286 21.942857 14.628571 7.314286 43.885714 51.2 80.457143 95.085714 80.457143 43.885714 0 87.771429-36.571429 95.085715-80.457143 0-7.314286 7.314286-14.628571 14.628571-21.942857 7.314286-7.314286 14.628571 0 21.942857 0l175.542857 102.4c7.314286 7.314286 14.628571 7.314286 14.628572 21.942857 0 7.314286 0 14.628571-7.314286 21.942857-14.628571 21.942857-21.942857 36.571429-21.942857 58.514286 0 51.2 43.885714 95.085714 95.085714 95.085714h14.628572c14.628571 0 21.942857 0 29.257143 14.628572h14.628571c0 7.314286 7.314286 7.314286 7.314286 14.628571v226.742857c0 7.314286-7.314286 14.628571-7.314286 21.942857-7.314286 7.314286-14.628571 7.314286-21.942857 7.314286H928.914286c-51.2 0-95.085714 43.885714-95.085715 95.085714 0 29.257143 14.628571 51.2 21.942858 65.828572 7.314286 7.314286 7.314286 14.628571 7.314285 21.942857s-7.314286 14.628571-14.628571 21.942857L658.285714 936.228571c-7.314286 7.314286-14.628571 7.314286-21.942857 0-7.314286 0-14.628571-7.314286-14.628571-14.628571-14.628571-43.885714-51.2-65.828571-87.771429-65.828571-43.885714 0-80.457143 29.257143-87.771428 65.828571 0 7.314286-7.314286 14.628571-14.628572 14.628571-14.628571 7.314286-21.942857 7.314286-21.942857 7.314286z m-168.228571-160.914286L394.971429 877.714286c29.257143-43.885714 73.142857-73.142857 131.657142-73.142857 51.2 0 102.4 29.257143 131.657143 73.142857l131.657143-80.457143c-14.628571-21.942857-21.942857-51.2-21.942857-73.142857 0-80.457143 65.828571-153.6 153.6-153.6V402.285714c-80.457143 0-153.6-65.828571-153.6-153.6 0-21.942857 7.314286-43.885714 14.628571-65.828571L658.285714 117.028571c-21.942857 51.2-73.142857 87.771429-131.657143 87.771429s-109.714286-36.571429-138.971428-87.771429l-146.285714 87.771429c7.314286 14.628571 14.628571 29.257143 14.628571 51.2 0 73.142857-51.2 131.657143-124.342857 146.285714v175.542857c73.142857 14.628571 124.342857 73.142857 124.342857 146.285715 0 21.942857-7.314286 43.885714-14.628571 58.514285z" fill="#000000"></path><path d="M526.628571 687.542857c-102.4 0-190.171429-87.771429-190.171428-190.171428 0-102.4 87.771429-190.171429 190.171428-190.171429 102.4 0 190.171429 87.771429 190.171429 190.171429 0 102.4-87.771429 190.171429-190.171429 190.171428z m0-329.142857c-73.142857 0-131.657143 58.514286-131.657142 131.657143s58.514286 131.657143 131.657142 131.657143S658.285714 570.514286 658.285714 497.371429s-58.514286-138.971429-131.657143-138.971429z" fill="#000000"></path></g></svg>
             </div>
         </div>
-    
+    <div class="main-window-setting"></div>
     <div class="main-setting">
         <div class="setting">
             <!-- <div class="closesetting"></div> -->
@@ -141,6 +142,7 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
     </div>
 </body>
 </html>
+
 <script type="text/javascript">
     const Logout = document.querySelectorAll('button')[1];
     Logout.addEventListener('click',function(){
@@ -174,37 +176,25 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
             })
             isShowFile =!isShowFile
         })
-        // const files = [];
-        // document.querySelectorAll('input[type=file]').addEventListener('change',function(){
-        //     let allowed_mime_type = [];
-        //     let allowed_size_mb = 100;
-        //     let files_input = document.querySelector('input[type=file]').files
-        //     if(files_input.lenght == 0){
-        //         console.log('Error: No file selected')
-        //     }
-        // })
 
     })
     let mainshow = document.querySelector('.main-setting'); 
     const opensetting = document.querySelector('.opensetting');
+    const main_show_setting = document.querySelector('.main-window-setting');
     const closesetting = document.querySelector('.closesetting');
     const rotate_setting = document.querySelectorAll('svg')[1];
     const colorchange = document.querySelectorAll('path')[1];
     const colorchange2 = document.querySelectorAll('path')[2];
-    // console.log(rotate_setting)
     const nav = document.querySelector('nav');
     let isOpenSetting = false;
     mainshow.style.visibility = "hidden";
+    main_show_setting.style.visibility = "hidden";
     rotate_setting.style.transform = "rotate(0deg)"
     document.querySelectorAll('svg')[1].addEventListener('click', () => {
-        // if(opensetting.parentElement === nav){
-        //     closesetting.appendChild(opensetting);
-        // }else{
-        //     nav.appendChild(opensetting);
-        // }
         if(isOpenSetting){
             rotate_setting.style.transform = "rotate(0deg)"
             mainshow.style.visibility = "hidden";
+            main_show_setting.style.visibility = "hidden"
             colorchange.style.fill = "black"
             colorchange2.style.fill = "black"
             opensetting.style.background = ""
@@ -214,9 +204,14 @@ if((isset($_SESSION['User_id'])) && (isset($_SESSION['authenticated']) && $_SESS
             colorchange2.style.fill = "white"
             opensetting.style.background = "#2874a6"
             mainshow.style.visibility = "";
+            main_show_setting.style.visibility = ""
         }
             isOpenSetting =!isOpenSetting;
         });
+    main_show_setting.addEventListener('click',()=>{
+        main_show_setting.style.visibility = "hidden";
+        mainshow.style.visibility = "hidden";
+        isOpenSetting = false;
+    })
         
     </script>
-

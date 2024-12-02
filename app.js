@@ -1,6 +1,7 @@
 const App = ()=>{
     const [videoLinks, setVideoLinks] = React.useState([]);
-  
+    // const coverVideoImageRef = React.useRef(null)
+    
       React.useEffect(() => {
           fetch('getInfoOfUser.php')
               .then(response => {
@@ -12,18 +13,16 @@ const App = ()=>{
               .then(data => {
                   if (Array.isArray(data.videos)) {
                       setVideoLinks(data.videos);
-                      console.log(data.videos.Namefile)
-                    } else {
-                      console.error('Oczekiwana tablica obiektów.');
                     }
                   })
                   .catch(error => console.error('Błąd przy pobieraniu danych:', error));
                 }, []);
                 return (
                     <>
+                <div className="cover-video-image"></div>
                     <AddFile/>
         {videoLinks.map((video, index) => (
-      <div key={index} className="video-of-users">
+            <div key={index} className="video-of-users">
           <div className="video-of-elements">
               <div className="toelements">
                   <div className="speaker">
@@ -63,23 +62,9 @@ const App = ()=>{
                       <video loading="lazy" type="video/mp4" src={"./source/"+video.FileAttach}></video>
                   </div>
               </div>
-              {/* <div className="more-info-video">
-                  <div className="btn-info">
-                  <i className="fa-solid fa-chevron-down fa-info1"></i>
-                  </div>
-                  <div className="addmore-info">
-                  <div className="info">
-                  <h3>Name: unknown</h3>
-                  <h3>Added: unknown</h3>
-                  </div>
-                  </div>
-              </div> */}
-              <div className="messages"><img src="./assces/comment_32dp_E8EAED_FILL0_wght400_GRAD0_opsz40.svg"></img></div>
+              <div className="message"><img src="./assets/comment_32dp_E8EAED_FILL0_wght400_GRAD0_opsz40.svg"></img></div>
+              <div className="messages-of-users"></div>
           </div>
-          {/* <div className="annotations-users">
-              <h4>Comments</h4>
-              <h4>Comments of live</h4>
-              </div> */}
       </div>
   ))}
   </>

@@ -192,6 +192,16 @@ nav{
     display: flex;
     justify-content: flex-end;
 }
+.main-window-setting{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.8;
+    background: #323D42;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+}
 .main-setting{
     position: absolute;
     float: right;
@@ -212,9 +222,6 @@ nav{
     margin-top: 5vh;
     width: 95%;
     border: 1px solid black;
-}
-.setting:hover{
-    /* transform: rotate(2deg); */
 }
 .setting>button{
     margin-left: 50%;
@@ -354,13 +361,26 @@ nav{
     margin-top: 1em;
     margin-left: 0em;
 }
-.messages{
+.cover-video-image{
+    position: absolute;
+    background: gray;
+    top: 5vh;
+    left: 0px;
+    width: 100vw;
+    height: 95vh;
+    opacity: 0.8;
+    z-index: 3;
+}
+.message{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 0.5rem;
     overflow: hidden;
     width: 0px;
+}
+.message>img{
+    cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
     .main-setting {
@@ -380,10 +400,6 @@ nav{
     .Main-content-media{
         margin-top: 7.5vh;
     }
-    .setting h3 {
-        
-    }
-
     .main-setting > button {
         margin-bottom: 1em;
     }

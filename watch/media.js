@@ -10,6 +10,8 @@
         const displaytitlevideo = document.querySelectorAll('.title-of-video');
         const media = document.querySelectorAll('video');
         const infovideo = document.querySelectorAll('.more-info-video')
+        const message = document.querySelectorAll('.message');
+        const coverVideoImage = document.querySelector('.cover-video-image')
         const infoget = document.querySelectorAll('.btn-info');
         const addinfo = document.querySelectorAll('.addmore-info')
         const showcontrolvideo = document.querySelectorAll('.control-video'); 
@@ -17,18 +19,19 @@
         const fullscreen = document.querySelectorAll('.controlscreen')
         const speaker = document.querySelectorAll('.speaker');
         const seebar = document.querySelectorAll('.timevideo');
-        
-            for(let e = 0, m = 0, v = 0, c = 0, s = 0, sp = 0, pl = 0, invi = 0, inget = 0, adinf = 0, con = 0, sebar= 0; e<selectvideo.length, m<media.length, v<video_of_user.length, c<showcontrolvideo.length, s<showcontrolvideo.length, sp<speaker.length, pl<playandpausevideo.length, invi<infovideo.length, inget<infoget.length, adinf<addinfo.length, con<fullscreen.length, sebar<seebar.length; e++, m++, v++, c++, s++, sp++, pl++, invi++, inget++, adinf++, con++, sebar++){
+
+            for(let e = 0, m = 0, v = 0, c = 0, s = 0, sp = 0, pl = 0, invi = 0, inget = 0, adinf = 0, con = 0, sebar= 0, mess=0; e<selectvideo.length, m<media.length, v<video_of_user.length, c<showcontrolvideo.length, s<showcontrolvideo.length, sp<speaker.length, pl<playandpausevideo.length, invi<infovideo.length, inget<infoget.length, adinf<addinfo.length, con<fullscreen.length, sebar<seebar.length, mess<message.length; e++, m++, v++, c++, s++, sp++, pl++, invi++, inget++, adinf++, con++, sebar++, mess++){
                 selectvideo[e].addEventListener('mouseover', startvideo)
                 selectvideo[e].addEventListener('touchstart',startvideo)
                 selectvideo[e].addEventListener('mouseout', stopvideo)
                 selectvideo[e].addEventListener('touchend', stopvideo)
                 speaker[sp].addEventListener('mouseover',startvideo)
                 speaker[sp].addEventListener('touchstart',startvideo)
-    
+                coverVideoImage.style.visibility = 'hidden'
+                
                 // infovideo[invi].style.display = 'none';
                 media[m].muted = true;
-                media[m].play()
+                // media[m].pause()
                 function startvideo(){
                     media[m].play()
                     video_of_user[v].classList.add('video-of-users-scale')
@@ -43,38 +46,43 @@
                     selectvideo[e].style.opacity = 1;
                     showcontrolvideo[c].classList.remove('control-video-showing')
                 }
-                //while a clicked in elemenet to video 
-                selectvideo[e].addEventListener('click', ()=>{
-                    // for(let i = 0; i<video_of_user.length; i++){
-                        // video_of_user[i].classList.remove('video-of-users-change')
-                        // showcontrolvideo[i].classList.remove('control-video-showingbig')
-                        // infovideo[i].style.display = 'none'
-                        // }
-                        // console.log('działa')
-                        //media[m].play()
-                        // speaker[sp].removeEventListener('mouseover',startvideo)
-                        speaker[sp].removeEventListener('mouseover',startvideo)
-                        
-                        selectvideo[e].removeEventListener('mouseover', startvideo)
-                        selectvideo[e].removeEventListener('mouseout', stopvideo)
-                        // infovideo[invi].style.display = ''
-                        showcontrolvideo[c].classList.add('control-video-showingbig')
-                        video_of_user[v].classList.add('video-of-users-change')
-                        selectvideo[e].style.height = '20em';
-                        video_of_user[v].style.transition = 'all 0.25ms;';
-                        // media[m].classList.add('video-enlarged');
-                        // console.log(selectvideo[e])
-    
+                selectvideo[e].addEventListener('click', showmedia)
+
+                function showmedia(){
+                    speaker[sp].removeEventListener('mouseover',startvideo)
+                    selectvideo[e].removeEventListener('mouseover', startvideo)
+                    selectvideo[e].removeEventListener('mouseout', stopvideo)
+                    coverVideoImage.addEventListener('click',coverMedia)
+                    selectvideo[e].removeEventListener('click',showmedia)
+                    showcontrolvideo[c].classList.add('control-video-showingbig')
+                    video_of_user[v].classList.add('video-of-users-change')
+                    selectvideo[e].style.height = '20em';
+                    message[mess].style.width = '40px';
+                    video_of_user[v].style.transition = 'all 0.25ms;';
+                    coverVideoImage.style.visibility = ''
                     media[m].addEventListener('click',videoplaying)
-    
-                    })
+                }
+                function coverMedia(){
+                    showcontrolvideo[c].classList.remove('control-video-showingbig')
+                    showcontrolvideo[c].classList.remove('control-video-showing')
+                    video_of_user[v].classList.remove('video-of-users-change')
+                    video_of_user[v].classList.remove('video-of-users-scale')
+                    selectvideo[e].style.height = '';
+                    message[mess].style.width = '';
+                    video_of_user[v].style.transition = 'all 0.25ms;';
+                    coverVideoImage.style.visibility = 'hidden'
+                    selectvideo[e].addEventListener('mouseover', startvideo)
+                    selectvideo[e].addEventListener('mouseout', stopvideo)
+                    selectvideo[e].addEventListener('click', showmedia)
+                    media[m].removeEventListener('click',videoplaying)
+
+                    media[m].pause();
+                }
                     media[m].addEventListener('play',()=>{
                         playandpausevideo[pl].classList.add('paused')
-                        // videoplaing()
                     })
                     media[m].addEventListener('pause',()=>{
                         playandpausevideo[pl].classList.remove('paused')
-                        // videoplaing()
                     })
                     playandpausevideo[pl].addEventListener('click',function(){
                         videoplaying()
@@ -82,7 +90,7 @@
                     function videoplaying(){
                         media[m].paused ? media[m].play() : media[m].pause()
                     } 
-                    videoplaying()
+                    // videoplaying()
     
     
                 function showandhiddenControl(){

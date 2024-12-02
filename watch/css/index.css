@@ -33,14 +33,14 @@
     top: 50%;
     transform: translate(0%, -50%);
     margin-bottom: 2em;
-    width: 42%;
+    width: 37em;
     height: 34vh;
     z-index: 3;
 }
 .element-to-video{
     position: relative;
-    width: 100%; /* lub inny rozmiar */
-    height: 12em; /* lub inny rozmiar */
+    width: 100%; 
+    height: 12em;
     opacity: 1;
     border-radius: 10px;
     background: black;
@@ -59,9 +59,6 @@
     /* width: 100%; */
     display: flex;
     flex-direction: row;
-    
-}
-.annotations-users{
     
 }
 .toelements{
