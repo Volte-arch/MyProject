@@ -1,4 +1,8 @@
 <?php
+session_start();
+require_once('../DB/ini.php');
+$conn = connect();
+if(isset($_SESSION['User_id'])){
 header('Content-Type: application/json');
 
 $response = [];
@@ -28,10 +32,11 @@ try {
         if ($fileSize > $maxFileSize) {
             throw new Exception("File is too large: $fileName (max 150MB)");
         }
-
         $NewNameFile = uniqid().'_'.basename($fileName);
         $destination = $uploadDirectory . $NewNameFile;
 
+        $uniqIdFile = uniqid();
+        $date = date('Y-m-d H:i:s');
         if (!move_uploaded_file($fileTmpPath, $destination)) {
             throw new Exception("Failed to save file: $fileName");
             echo json_encode([
@@ -39,9 +44,21 @@ try {
                 'message' => "Your uploaded file is problem"
             ]);
         }else{
+            $sql = "INSERT INTO `addedfile`(`ID_user`, `Uniqid`, `Type`, `FileAttach`, `Namefile`,`Size`,`Date_added`) VALUES (:ID_user, :Uniqid, :Type, :FileAttach, :namefile, :Size, :Date_added)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                ":ID_user" => $_SESSION['User_id'],
+                ":Uniqid" => $uniqIdFile,
+                "Type"=>$fileType,
+                ":FileAttach" => $NewNameFile,
+                ":namefile" => $fileName,
+                "Size"=>$fileSize,
+                "Date_added"=>$date
+            ]);
+
             echo json_encode([
                 'status' => 'success',
-                'message' => "Uploaded successfully: ".htmlspecialchars($fileName)
+                'message' => "Uploaded successfully: "
             ]);
             
         }
@@ -50,4 +67,7 @@ try {
 } catch (Exception $e) {
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
 
+}
+}else{
+    header('location: ../');
 }
