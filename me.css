@@ -105,7 +105,7 @@ nav{
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* text-align: center; */
-    width: 9rem;
+    width: 10rem;
     height: 20vh;
     margin-right: 1rem;
     margin-left: 1rem;
@@ -363,7 +363,7 @@ nav{
 }
 .cover-video-image{
     position: absolute;
-    background: gray;
+    background: black;
     top: 5vh;
     left: 0px;
     width: 100vw;

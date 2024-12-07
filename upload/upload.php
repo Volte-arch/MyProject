@@ -32,11 +32,12 @@ try {
         if ($fileSize > $maxFileSize) {
             throw new Exception("File is too large: $fileName (max 150MB)");
         }
-        $NewNameFile = uniqid().'_'.basename($fileName);
+        $NewNameFile = bin2hex(random_bytes(6)).'_'.basename($fileName);
         $destination = $uploadDirectory . $NewNameFile;
 
-        $uniqIdFile = uniqid();
+        $uniqIdFile = bin2hex(random_bytes(6));
         $date = date('Y-m-d H:i:s');
+        $getInfoDevice = $_SERVER['HTTP_USER_AGENT'];
         if (!move_uploaded_file($fileTmpPath, $destination)) {
             throw new Exception("Failed to save file: $fileName");
             echo json_encode([
@@ -44,7 +45,7 @@ try {
                 'message' => "Your uploaded file is problem"
             ]);
         }else{
-            $sql = "INSERT INTO `addedfile`(`ID_user`, `Uniqid`, `Type`, `FileAttach`, `Namefile`,`Size`,`Date_added`) VALUES (:ID_user, :Uniqid, :Type, :FileAttach, :namefile, :Size, :Date_added)";
+            $sql = "INSERT INTO `addedfile`(`ID_user`, `Uniqid`, `Type`, `FileAttach`, `Namefile`,`Size`,`Date_added`,`From_device`) VALUES (:ID_user, :Uniqid, :Type, :FileAttach, :namefile, :Size, :Date_added, :Device)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ":ID_user" => $_SESSION['User_id'],
@@ -53,7 +54,8 @@ try {
                 ":FileAttach" => $NewNameFile,
                 ":namefile" => $fileName,
                 "Size"=>$fileSize,
-                "Date_added"=>$date
+                "Date_added"=>$date,
+                "Device"=>$getInfoDevice
             ]);
 
             echo json_encode([

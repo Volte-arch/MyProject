@@ -1,180 +1,156 @@
-
-
-
 // document.addEventListener("DOMContentLoaded",function(){
     const targetNode = document.querySelector('.Content-media');
     function media(){
     
-        const selectvideo = document.querySelectorAll('.element-to-video');
-        const video_of_user = document.querySelectorAll('.video-of-users');
-        const displaytitlevideo = document.querySelectorAll('.title-of-video');
-        const media = document.querySelectorAll('video');
-        const infovideo = document.querySelectorAll('.more-info-video')
-        const message = document.querySelectorAll('.message');
-        const coverVideoImage = document.querySelector('.cover-video-image')
-        const infoget = document.querySelectorAll('.btn-info');
-        const addinfo = document.querySelectorAll('.addmore-info')
-        const showcontrolvideo = document.querySelectorAll('.control-video'); 
-        const playandpausevideo = document.querySelectorAll('.controlplaypause');
-        const fullscreen = document.querySelectorAll('.controlscreen')
-        const speaker = document.querySelectorAll('.speaker');
-        const seebar = document.querySelectorAll('.timevideo');
+        const selectvideo = document.querySelectorAll('.element-to-video:not([data-processed]');
+        const video_of_user = document.querySelectorAll('.video-of-users:not([data-processed]');
+        const media = document.querySelectorAll('video:not([data-processed]');
+        const message = document.querySelectorAll('.message:not([data-processed]');
+        const coverVideoImage = document.querySelector('.cover-video-image');
+        const showcontrolvideo = document.querySelectorAll('.control-video:not([data-processed]');
+        const playandpausevideo = document.querySelectorAll('.controlplaypause:not([data-processed]');
+        const fullscreen = document.querySelectorAll('.controlscreen:not([data-processed]');
+        const speaker = document.querySelectorAll('.speaker:not([data-processed]');
+        const seebar = document.querySelectorAll('.timevideo:not([data-processed]');
+        
+        media.forEach((video, i) => {
 
-            for(let e = 0, m = 0, v = 0, c = 0, s = 0, sp = 0, pl = 0, invi = 0, inget = 0, adinf = 0, con = 0, sebar= 0, mess=0; e<selectvideo.length, m<media.length, v<video_of_user.length, c<showcontrolvideo.length, s<showcontrolvideo.length, sp<speaker.length, pl<playandpausevideo.length, invi<infovideo.length, inget<infoget.length, adinf<addinfo.length, con<fullscreen.length, sebar<seebar.length, mess<message.length; e++, m++, v++, c++, s++, sp++, pl++, invi++, inget++, adinf++, con++, sebar++, mess++){
-                selectvideo[e].addEventListener('mouseover', startvideo)
-                selectvideo[e].addEventListener('touchstart',startvideo)
-                selectvideo[e].addEventListener('mouseout', stopvideo)
-                selectvideo[e].addEventListener('touchend', stopvideo)
-                speaker[sp].addEventListener('mouseover',startvideo)
-                speaker[sp].addEventListener('touchstart',startvideo)
-                coverVideoImage.style.visibility = 'hidden'
-                
-                // infovideo[invi].style.display = 'none';
-                media[m].muted = true;
-                // media[m].pause()
-                function startvideo(){
-                    media[m].play()
-                    video_of_user[v].classList.add('video-of-users-scale')
-                    // selectvideo[e].style.height = '15em';
-                    selectvideo[e].style.opacity = 1;
-                    showcontrolvideo[c].classList.add('control-video-showing')
-                }
-                function stopvideo(){
-                    media[m].pause()
-                    // selectvideo[e].style.height = '12em';
-                    video_of_user[v].classList.remove('video-of-users-scale')
-                    selectvideo[e].style.opacity = 1;
-                    showcontrolvideo[c].classList.remove('control-video-showing')
-                }
-                selectvideo[e].addEventListener('click', showmedia)
+            const select = selectvideo[i];
+            const user = video_of_user[i];
+            const control = showcontrolvideo[i];
+            const speakerButton = speaker[i];
+            const seekbar = seebar[i];
+            const playPause = playandpausevideo[i];
+            const msg = message[i];
+         
+            select.dataset.processed = true;
+            user.dataset.processed = true;
+            video.dataset.processed = true;
 
-                function showmedia(){
-                    speaker[sp].removeEventListener('mouseover',startvideo)
-                    selectvideo[e].removeEventListener('mouseover', startvideo)
-                    selectvideo[e].removeEventListener('mouseout', stopvideo)
-                    coverVideoImage.addEventListener('click',coverMedia)
-                    selectvideo[e].removeEventListener('click',showmedia)
-                    showcontrolvideo[c].classList.add('control-video-showingbig')
-                    video_of_user[v].classList.add('video-of-users-change')
-                    selectvideo[e].style.height = '20em';
-                    message[mess].style.width = '40px';
-                    video_of_user[v].style.transition = 'all 0.25ms;';
-                    coverVideoImage.style.visibility = ''
-                    media[m].addEventListener('click',videoplaying)
-                }
-                function coverMedia(){
-                    showcontrolvideo[c].classList.remove('control-video-showingbig')
-                    showcontrolvideo[c].classList.remove('control-video-showing')
-                    video_of_user[v].classList.remove('video-of-users-change')
-                    video_of_user[v].classList.remove('video-of-users-scale')
-                    selectvideo[e].style.height = '';
-                    message[mess].style.width = '';
-                    video_of_user[v].style.transition = 'all 0.25ms;';
-                    coverVideoImage.style.visibility = 'hidden'
-                    selectvideo[e].addEventListener('mouseover', startvideo)
-                    selectvideo[e].addEventListener('mouseout', stopvideo)
-                    selectvideo[e].addEventListener('click', showmedia)
-                    media[m].removeEventListener('click',videoplaying)
+            select.addEventListener('mouseover', startvideo);
+            select.addEventListener('mouseout', stopvideo);
+            select.addEventListener('click', showmedia);
+            speakerButton.addEventListener('mouseover',startvideo)
+            speakerButton.addEventListener('mouseout',startvideo)
 
-                    media[m].pause();
-                }
-                    media[m].addEventListener('play',()=>{
-                        playandpausevideo[pl].classList.add('paused')
-                    })
-                    media[m].addEventListener('pause',()=>{
-                        playandpausevideo[pl].classList.remove('paused')
-                    })
-                    playandpausevideo[pl].addEventListener('click',function(){
-                        videoplaying()
-                    })
-                    function videoplaying(){
-                        media[m].paused ? media[m].play() : media[m].pause()
-                    } 
-                    // videoplaying()
-    
-    
-                function showandhiddenControl(){
-                    showcontrolvideo[s].classList.toggle('control-video-showingbig')
-                }
-    
-    
-                
-                
-                // videoplaing()
-                function fullscreenvideo (){
-                    if (!document.fullscreenElement) {
-                        media[m].requestFullscreen().catch(err => {
-                          console.error('Nie można wejść w tryb pełnoekranowy:', err);
-                        });
-                        media[m].controls = false;
-                      } else {
-                        document.exitFullscreen();
-                      }
-                }
-    
-                seebar[sebar].addEventListener("input", function() {
-                    let seekValue = seebar[sebar].value;
-                    let videoTime = (seekValue / 100) * media[m].duration;
-                    media[m].currentTime = videoTime;
-                    updatSliderFill()
-                    
-                  });
-    
-    
-                media[m].addEventListener("timeupdate", function() {
-                    let value = (media[m].currentTime / media[m].duration) * 100;
-                    seebar[sebar].value = value;
-                    updatSliderFill()
-                  });  
-                  function updatSliderFill(){
-                    const value = seebar[sebar].value;
-                    const max = seebar[sebar].max;
-                    const percentage = (value / max) * 100;
-                    seebar[sebar].style.background = `linear-gradient(to right, #007bff ${percentage}%, transparent ${percentage}%)`;
-                  }
-                  updatSliderFill()
-                  
+            video.muted = true;
+
+            function startvideo() {
+
+                video.play();
+                user.classList.add('video-of-users-scale');
+                select.style.opacity = 1;
+                control?.classList.add('control-video-showing');
             }
-            speaker.forEach(element=>{
-                element.addEventListener('click',function(){
-                    toggleAllVideoMute()
-                })
+        
+            function stopvideo() {
+
+                video.pause();
+                user.classList.remove('video-of-users-scale');
+                select.style.opacity = 1;
+                control.classList.remove('control-video-showing');
+            }
+
+            function showmedia() {
+                
+                control.classList.add('control-video-showingbig');
+                user.classList.add('video-of-users-change');
+                select.style.height = '30em';
+                msg.style.width = '40px';
+                coverVideoImage.style.visibility = '';
+                user.style.transition = 'all 250ms';
+                select.removeEventListener('mouseover', startvideo);
+                select.removeEventListener('mouseout', stopvideo);
+                select.removeEventListener('click', showmedia);
+                coverVideoImage.addEventListener('click', coverMedia);
+                video.addEventListener('click', toggleVideo);
+            }
+        
+            function coverMedia() {
+
+                control.classList.remove('control-video-showingbig', 'control-video-showing');
+                user.classList.remove('video-of-users-change', 'video-of-users-scale');
+                select.style.height = '';
+                msg.style.width = '';
+                user.style.transition = 'all 250ms';
+                coverVideoImage.style.visibility = 'hidden';
+                select.addEventListener('mouseover', startvideo);
+                select.addEventListener('mouseout', stopvideo);
+                select.addEventListener('click', showmedia);
+                video.removeEventListener('click', toggleVideo);
+                video.pause();
+            }
+            video.addEventListener('play', () => playPause.classList.add('paused'));
+            video.addEventListener('pause', () => playPause.classList.remove('paused'));
+
+            playPause.addEventListener('click', toggleVideo);
+
+            function toggleVideo() {
+                video.paused ? video.play() : video.pause();
+            }
+            
+            seekbar.addEventListener('input', handleSeekbarInput);
+
+            function handleSeekbarInput() {
+
+                const videoTime = (seekbar.value / 100) * video.duration;
+                video.currentTime = videoTime;
+                updateSliderFill(seekbar, video);
+            }
+     
+            video.addEventListener('timeupdate', () => {
+
+                const value = (video.currentTime / video.duration) * 100;
+                seekbar.value = value;
+                updateSliderFill(seekbar, video);
+            });
+            function updateSliderFill(seekbar, video) {
+                
+                const value = seekbar.value;
+                const max = seekbar.max;
+                const percentage = (value / max) * 100;
+                seekbar.style.background = `linear-gradient(to right, #007bff ${percentage}%, transparent ${percentage}%)`;
+            }
+
+        
+        
+        });
+        
+        speaker.forEach(element=>{
+            element.addEventListener('click',function(){
+                toggleAllVideoMute()
             })
-            function reaction_video(){
-                const reaction = document.querySelectorAll(".active-reaction");
-                const reactionContent = document.querySelectorAll('.reaction-container')
-                let isVisible = true
-                // reactionContent.forEach(hide=>{
-                //     hide.classList.remove("reaction-container-display")
-                // })
-                reaction.forEach(react=>{
-                    react.addEventListener('click', function(){
-                        reactionContent.forEach(reactions=>{
-                            if(isVisible){
-                                reactions.classList.add("reaction-container-display")
-                            }else{
-                                reactions.classList.remove("reaction-container-display")
-                            }
-                        })
-                        isVisible = !isVisible
-                        
-                    })
-                })
-            }
-            reaction_video()
-            function toggleAllVideoMute(){
-                media.forEach(video=>{
-                    if(video.muted){
-                        video.muted = false;
-                        video.volume = 0.5
-                        speaker.forEach(sp=>sp.classList.add('unmuted'))
-                    }else{
-                        video.muted = true;
-                        speaker.forEach(sp=>sp.classList.remove('unmuted'))
-                    }
-                })
-            }
-            }
+        })
+        function toggleAllVideoMute(){
+            media.forEach(video=>{
+                if(video.muted){
+                    video.muted = false;
+                    video.volume = 0.2
+                    speaker.forEach(sp=>sp.classList.add('unmuted'))
+                }else{
+                    video.muted = true;
+                    speaker.forEach(sp=>sp.classList.remove('unmuted'))
+                }
+            })
+        }
+        function reaction_video() {
+            const reaction = document.querySelectorAll(".active-reaction");
+            const reactionContent = document.querySelectorAll('.reaction-container');
+            let isVisible = true;
+        
+            reaction.forEach((react) => {
+                react.addEventListener('click', () => {
+                    reactionContent.forEach((reactions) => {
+                        reactions.classList.toggle("reaction-container-display", isVisible);
+                    });
+                    isVisible = !isVisible;
+                });
+            });
+        }
+        reaction_video();
+    }
+media()
+// })
             const config = {childList: true, subtree: true};
             const callback = (MutationsList)=>{
                 for(const mutation of MutationsList){
@@ -185,4 +161,3 @@
             }
             const observer = new MutationObserver(callback);
             observer.observe(targetNode,config)
-            media()
