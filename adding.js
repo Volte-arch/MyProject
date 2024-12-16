@@ -49,7 +49,8 @@ const AddFile = () => {
         e.target.files.value = "";
     };
     
-        
+
+    
     const handleclick = async (e) => {
     e.preventDefault();
 
@@ -90,6 +91,10 @@ const AddFile = () => {
     }
 
     }
+    const remove = (id) => {
+        setfile((prevItems) => prevItems.filter((item) => item.src !== id.src));
+        setFilesToUpload((prevFiles)=>prevFiles.filter((file)=>file.name !==id.name))
+    };
         return (
         <>
             <div className="Main-add-file" style={{ visibility: 'hidden' }}></div>
@@ -107,8 +112,15 @@ const AddFile = () => {
                     </form>
                 </div>
                 {image.map((file,index)=>(
-                    <div key={index} className="added-files"> 
-                    {file.type === 'image'? (<img style={{width:'150px', height:'185px', borderRadius:'10px'}} src={file.src}></img>) : (<video src={file.src} autoPlay controls muted></video>)}
+                    <div key={index} className="added-files">
+                        <button onClick={()=>remove(file)}><img src={"../assets/cancel_32dp_000000_FILL1_wght700_GRAD200_opsz40.svg"}></img></button>
+                    {file.type === 'image'? (<img style={{width:'9em', height:'185px', borderRadius:'10px'}} src={file.src}></img>) : 
+                    (<video src={file.src} autoPlay controls></video>)}
+                        <div className="Title">
+                            <form method="post">
+                                <input type="text" placeholder="Type title"/>
+                            </form>
+                        </div>
                     </div>
                 ))}
             </div>

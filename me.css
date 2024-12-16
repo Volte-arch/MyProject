@@ -105,8 +105,8 @@ nav{
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* text-align: center; */
-    width: 10rem;
-    height: 20vh;
+    width: 10em;
+    height: 13em;
     margin-right: 1rem;
     margin-left: 1rem;
     margin-bottom: 1rem;
@@ -114,9 +114,10 @@ nav{
     z-index: 0;
 }
 .added-files{
+    position: relative;
     background: black;
-    width: 150px;
-    height: 20vh;
+    width: 9em;
+    height: 13em;
     border-radius: 10px;
     margin-right: 1rem;
     margin-left: 1rem;
@@ -126,17 +127,37 @@ nav{
 .added-files>video{
     border-radius: 10px;
     width: 100%;
-    height: 20vh;
+    height: 13em;
+}
+.added-files>button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 100%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+}
+.Title>form>input[type="text"]{
+    width: 92%;
+    margin-top: 0.5em;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: none;
 }
 .add-file>form{
     width: 100%;
-    height: 20vh;
+    height: 18vh;
 }
 .add-file>form>label{
     position: absolute;
     left: 0px;
     width: 100%;
-    height: 20vh;
+    height: 13em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,7 +169,7 @@ nav{
     position: absolute;
     bottom: 0em;
     width: 100%;
-    height: 4vh;
+    height: 4em;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
@@ -351,7 +372,6 @@ nav{
 .Main-content-media::-webkit-scrollbar-thumb{
     background: #2E5073;
 }
-
 .Content-media{
     z-index: 3;
     display: flex;
