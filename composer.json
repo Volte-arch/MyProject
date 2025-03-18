@@ -1,0 +1,17 @@
+{
+    "name": "vendor/core",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "marcin"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.12",
+        "firebase/php-jwt": "^6.10"
+    }
+}

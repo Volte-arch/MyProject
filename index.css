@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&display=swap');
+body{
+    background: #2e4053;
+    background-attachment: scroll;
+    margin: 0px;
+    padding: 0px;
+}
+.background, img{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.background>img{
+    background-repeat: no-repeat;
+    width: 50em;
+    height: 50em;
+    transform: rotate(15deg);
+
+}
+.sign-in-and-out{
+    position: absolute;
+    right: 0px;
+    display: flex;
+    z-index: 2;
+    /* visibility: hidden; */
+}
+.sign-in-and-out button{
+    margin-top: 1em;
+    margin-right: 0.5em;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid rgb(26, 113, 163);
+    height: 2.5em;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 250ms;
+}
+.sign-in-and-out button:hover{
+    background: rgb(12, 107, 131);
+}
+.PopupFormMainActivity{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    transition: all 0.4s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+.PopupFormCloseActivity{
+    position: fixed;
+    opacity: 0.3;
+    background: black;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}
+.PopupFormActivity{
+    background: white;
+    border-radius: 5px;
+    width: 30em;
+    z-index: 3;
+}
+.PopupForm{
+    display: flex;
+    justify-content: flex-start;
+    transition: all 250ms;
+}
+.Sign-in-Form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background: #567597;
+    margin: 5px;
+    width: 100%;
+}
+.Sign-in-Form>form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 1em;
+}
+.Sign-in-Form>form>input[type=text]{
+    border-radius: 5px;
+    border: none;
+    height: 2em;
+    padding-left: 1em;
+    margin: 0.5em;
+}
+.Sign-in-Form>form>input[type=password]{
+    border-radius: 5px;
+    border: none;
+    height: 2em;
+    padding-left: 1em;
+    margin: 0.5em;
+}
+.Sign-in-Form>form>button[type=submit]{
+    border-radius: 5px;
+    border: none;
+    height: 2em;
+    margin:0.5em;
+    cursor: pointer;
+}
+.Sign-up-Form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background: #567597;
+    margin: 5px;
+    width: 100%;
+}
+.Sign-up-Form>form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 1em;
+}
+.Sign-up-Form>form>input[type=text]{
+    border-radius: 5px;
+    margin-bottom: 1em;
+    border: none;
+    height: 2em;
+    padding-left: 1em;
+}
+.Sign-up-Form>form>.boxfirst,.boxsecond{
+    display: flex;
+    justify-content: space-between;
+}
+.Answer{
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+.boxfirst>input[type=text]{
+    border-radius: 5px;
+    margin-bottom: 1em;
+    border: none;
+    height: 2em;
+    width: 44%;
+    padding-left: 1em;
+}
+.boxsecond>input[type=password]{
+    border-radius: 5px;
+    margin-bottom: 1em;
+    border: none;
+    height: 2em;
+    width: 44%;
+    padding-left: 1em;
+}
+.Sign-up-Form>form>button[type=submit]{
+    border-radius: 5px;
+    border: none;
+    height: 2em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    cursor: pointer;
+    transition: all 250ms;
+}
+.Sign-up-Form>form>.checkboxs{
+    border: 1px dashed black;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+.Sign-up-Form>form>.checkboxs>input[type=checkbox]{
+    width: 1em;
+    height: 1em;
+    margin-right: 1em;
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
+}
+.Sign-up-Form>form>.checkboxs>p{
+    margin: 0em;
+}
+.Sign-up-Form>form>button[type=submit]:hover{
+    background: #4f9ab8;
+}
+.Sign-in-Form>.Remind{
+    height: 3em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Sign-in-Form>.Remind a{
+    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+.conteiner{
+    position: absolute;
+    width: 25%;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%,-50%);
+    transition: all 250ms;
+}
+.tocopylink{
+    width: 100%;
+    margin-top: 0em;
+    display: flex;
+}
+.tocopylink>input{
+    width: 100%;
+    height: 2em;
+    border: none;
+    padding-left: 0.5em;
+}
+.tocopylink>button[type=submit]{
+    border: none;
+    margin-left: 0.2em;
+    width: 30%;
+    font-size: 70%;
+    cursor: pointer;
+}
+.tocopylink>button:hover{
+    background: rgb(180, 180, 180);
+}
+.adding-file{
+    position: relative;
+    height: 12em;
+    margin-top: 1em;
+}
+.adding-file svg{
+    position: absolute;
+    left: 50%;
+    top: 2.5em;
+    transform: translate(-50%,-50%);
+}
+.progress circle{
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+.info-file{
+    text-align: center;
+    padding-top: 1em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 20px;
+}
+h3{
+    position: absolute;
+    bottom: 28%;
+    width: 100%;
+    height: 1.1em;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.infoaboutsend{
+    padding-bottom: 1em;
+    margin-top: 14em;
+}
+h4{
+    text-align: center;
+    color: white;
+    background: rgb(138, 42, 42);
+    display: block;
+}
+.fa-circle-plus{
+    font-size: 50px;
+}
+input[type=file]{
+    display: none;
+}
+label{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    background: #727a83;
+}
+.upload>button{
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    border: none;
+    bottom: 0px;
+    cursor: pointer;
+}
+.show{
+    margin-top: 1em;
+    width: 100%;
+    background: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 250ms;
+}
+video{
+    width: 100%;
+    height: 360px;
+}
+.upload>button:hover{
+    background: rgb(180, 180, 180);
+}
+@media only screen and (max-width: 600px) {
+    body {
+        .conteiner{
+            width: 80%;
+        }
+        video{
+            width: 100%;
+            height: 380px;
+        }
+        .background>img{
+            width: 25em;
+            height: 25em;
+        }
+    }
+}
